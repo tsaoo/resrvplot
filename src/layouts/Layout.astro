@@ -384,10 +384,14 @@ if (window.swup) {
 </script>
 
 
+{/*100% opacity at 70% height, 0% opacity at bottom (100% height) */}
 <style is:global lang="stylus">
 #banner-wrapper
 	top: 0
-	opacity: 1
+	img
+		mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%)
+		-webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%)
+  
 .banner-closed
 	#banner-wrapper
 		top: -120px
