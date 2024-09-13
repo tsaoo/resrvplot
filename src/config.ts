@@ -57,6 +57,11 @@ export const profileConfig: ProfileConfig = {
       icon: 'fa6-brands:github',
       url: 'https://github.com/tsaoo',
     },
+    {
+      name: 'E-Mail',
+      icon: 'material-symbols:alternate-email',
+      url: 'mailto:tinesharp@outlook.com',
+    },
   ],
 }
 
