@@ -47,7 +47,8 @@ rainbow-light = linear-gradient(to right, oklch(0.80 0.10 0), oklch(0.80 0.10 30
 rainbow-dark = linear-gradient(to right, oklch(0.70 0.10 0), oklch(0.70 0.10 30), oklch(0.70 0.10 60), oklch(0.70 0.10 90), oklch(0.70 0.10 120), oklch(0.70 0.10 150), oklch(0.70 0.10 180), oklch(0.70 0.10 210), oklch(0.70 0.10 240), oklch(0.70 0.10 270), oklch(0.70 0.10 300), oklch(0.70 0.10 330), oklch(0.70 0.10 360))
 
 :root
-  --radius-large 1rem
+<!-- It seems to control the radius of rounded corners -->
+  --radius-large 0rem
 
   --banner-height-home 65vh
   --banner-height 35vh
@@ -136,7 +137,7 @@ color_set({
     height: 16px;
     .os-scrollbar-track .os-scrollbar-handle
       height: 4px;
-      border-radius: 4px;
+      border-radius: 1px;
     &:hover
       .os-scrollbar-track .os-scrollbar-handle
         height: 8px;
@@ -149,7 +150,7 @@ color_set({
     width: 16px;
     .os-scrollbar-track .os-scrollbar-handle
       width: 4px;
-      border-radius: 4px;
+      border-radius: 1px;
     &:hover
       .os-scrollbar-track .os-scrollbar-handle
         width: 8px;
