@@ -1,0 +1,10 @@
+---
+import { Markdown } from 'astro-remote';
+interface Props{
+    src: string
+}
+const content = await fetch(Astro.props.src).then(res => res.text());
+---
+
+<!-- Render <h1> as custom <Title> component -->
+<Markdown content={content} />
