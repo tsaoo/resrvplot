@@ -1,0 +1,28 @@
+---
+interface WebsiteCard {
+    url: string;
+    logo?: string;
+    description: string;
+    title: string;
+  }
+  
+const { url, logo, description, title } = Astro.props as WebsiteCard;
+
+---     
+  
+<div class="website-link-card flex items-center rounded-lg p-2 my-2 transition-shadow box-shadow hover:shadow-lg w-full bg-gray-100 dark:bg-black relative">
+<a href={url} target="_blank" rel="noopener noreferrer" class="card-link flex items-center w-full text-inherit" style="padding-left: 1.5rem;"> 
+    {logo && <img src={logo} alt={`${title} logo`} class="website-link-logo w-8 h-8 object-contain rounded-md mr-5" />}
+    <div class="website-link-info flex-1">
+    <div class="website-link-header flex items-baseline mb-[-10px]">
+        <h3 class="website-link-title text-[20px] font-semibold text-[#333] dark:text-[#f9f9f9]">{title}</h3>
+        <span class="divider mx-1 text-[20px] text-[#333] dark:text-[#f9f9f9]"> / </span>
+        <p class="website-link-url text-[12px] text-[#007bff] hover:underline">{url}</p>
+    </div>
+    <p class="website-link-description mt-[-10px] text-[16px] text-[#333] dark:text-[#f9f9f9] mb-[30px]">{description}</p>
+    </div>
+</a>
+{logo && (
+    <img src={logo} alt="Extra logo" class="absolute top-[-10px] right-[28px] w-6 h-6 object-contain" />
+)}
+</div>

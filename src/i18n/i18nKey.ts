@@ -3,6 +3,7 @@ enum I18nKey {
   about = 'about',
   archive = 'archive',
   cv = 'cv',
+  links = 'links',
   search = 'search',
 
   tags = 'tags',
