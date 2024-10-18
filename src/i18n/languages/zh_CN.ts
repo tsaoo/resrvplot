@@ -15,6 +15,8 @@ export const zh_CN: Translation = {
 
   [Key.comments]: '评论',
 
+  [Key.toc]: '目录',
+
   [Key.untitled]: '无标题',
   [Key.uncategorized]: '未分类',
   [Key.noTags]: '无标签',

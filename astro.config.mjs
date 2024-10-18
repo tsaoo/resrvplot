@@ -41,7 +41,7 @@ export default defineConfig({
     animationClass: 'transition-swup-',   // see https://swup.js.org/options/#animationselector
                                           // the default value `transition-` cause transition delay
                                           // when the Tailwind class `transition-all` is used
-    containers: ['main'],
+    containers: ['main', '#toc'],   // Add '#toc' to refresh the TOC block when open new page, don't know why it works like this.
     smoothScrolling: true,
     cache: true,
     preload: true,

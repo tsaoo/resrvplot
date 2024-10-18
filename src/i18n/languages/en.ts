@@ -15,6 +15,8 @@ export const en: Translation = {
 
   [Key.comments]: 'Comments',
 
+  [Key.toc]: 'Table of Content',
+
   [Key.untitled]: 'Untitled',
   [Key.uncategorized]: 'Uncategorized',
   [Key.noTags]: 'No Tags',
