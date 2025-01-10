@@ -72,7 +72,7 @@ $$\frac{{\delta n}}{{\delta t}} = \frac{1}{q}\frac{{\delta {J_N}(x)}}{{\delta x}
 </center>
 <center>
 
-$$\frac{{\delta p}}{{\delta t}} = \frac{1}{q}\frac{{\delta {J_P}(x)}}{{\delta x}} - \frac{{\Delta p}}{{{\tau _p}}} + {G_L}$$
+$$\frac{{\delta p}}{{\delta t}} = -\frac{1}{q}\frac{{\delta {J_P}(x)}}{{\delta x}} - \frac{{\Delta p}}{{{\tau _p}}} + {G_L}$$
 
 </center>
 

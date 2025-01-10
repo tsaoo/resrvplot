@@ -2,63 +2,33 @@ import { Image } from 'astro:assets';
 import MultistageCLLC_1 from '/src/assets/images/MultistageCLLC-1.png'
 import MultistageCLLC_2 from '/src/assets/images/MultistageCLLC-2.png'
 import MultistageCLLC_3 from '/src/assets/images/MultistageCLLC-3.png'
+import MultistageCLLC_4 from '/src/assets/images/MultistageCLLC-4.png'
+import MultistageCLLC_5 from '/src/assets/images/MultistageCLLC-5.png'
+import MultistageCLLC_6 from '/src/assets/images/MultistageCLLC-6.png'
+import MultistageCLLC_7 from '/src/assets/images/MultistageCLLC-7.jpg'
+import MultistageCLLC_8 from '/src/assets/images/MultistageCLLC-8.png'
+import MultistageCLLC_9 from '/src/assets/images/MultistageCLLC-9.jpg'
+import MultistageCLLC_10 from '/src/assets/images/MultistageCLLC-10.jpg'
+
+import NeuralStimulator from '/src/assets/images/NeuralStimulator.png'
+
 import Heartsound_1 from '/src/assets/images/heartsound-1.jpg'
 import Heartsound_2 from '/src/assets/images/heartsound-2.jpg'
 
-# Education
-**B.S.** in Electronic Information Engineering, Zhejiang University
+import Xray_1 from '/src/assets/images/Xray-1.png'
+import Xray_2 from '/src/assets/images/Xray-2.jpg'
+import Xray_3 from '/src/assets/images/Xray-3.png'
+import Xray_4 from '/src/assets/images/Xray-4.png'
 
-# Honor
-<table cellpadding="10" cellspacing="0" width="100%" style="font-size: 16px;">
-    <tr>
-        <td width="15%">2024</td>
-        <td>Second-Class Scholarship</td>
-        <td>Zhejiang University</td>
-    </tr>
-    <tr>
-        <td>2023</td>
-        <td>Third-Class Scholarship</td>
-        <td>Zhejiang University</td>
-    </tr>
-    <tr>
-        <td>2023, 2024</td>
-        <td>Academic Excellence Award</td>
-        <td>Zhejiang University</td>
-    </tr>
-    <tr>
-        <td>2022, 2024</td>
-        <td>Innovation Excellence Award</td>
-        <td>Zhejiang University</td>
-    </tr>
-</table>
+import Geiger from '/src/assets/images/Geiger.jpg'
 
-# Language
 
-<table cellpadding="10" cellspacing="0" width="100%" style="font-size: 16px;">
-    <tr>
-        <td>TOEFL</td>
-        <td>105</td>
-    </tr>
-    <tr>
-        <td>GRE</td>
-        <td>329</td>
-    </tr>
- 
-</table>
+# 1kW Bidirectional Isolated DC/DC Converter
 
----
-# Research Experience
-## Wireless Neural Stimulator with Simultaneous Energy-Information Transmission
+- A 1kW bidirectional isolated DC/DC Converter, with 36~60V on the LV side and 400V on the HV side. The device achieves peak efficiency of ~95% at 500W load. GaN HEMTs and planar transformer are used to improve power density, allowing for portable size with the thickness low as 25mm. Experiment validated that the converter is capable of driving 500W load with natural cooling at room temperature, or 1kW load with an extra 10W forced cooling.
 
-- An implanted Sphenopalatine Ganglion stimulator powered and controlled by an inductively coupled coil pair. The device eases the symptoms of stroke by generating current pulses to the nerve tissue, so that the blood flow in the brain is recovered.
-- Responsible for circuit design and validation. Design a miniature implanted stimulator which receives power and control signal simultaneously from a single coil pair. The control signal is demodulated from the RF power carrier. Biphasic constant-current pulse is generated through a polarity recovering circuit and an transimpedance amplifier with current feedback.
-- Proposed a novel constant-voltage wireless power transmission system, which suits the 13.56MHz ISM band and needs no upstream communication from the receiver. Independently finished the theoretical analysis, built the experiment platform and analyzed the experiment result. Attended the INGEP 2024 conference with poster presentation as the first author.
-- Collaborated with the R&D team of Zhejiang Qizhen Healthcare Tech Ltd.. Acquired 2 national patents.
-- Ran circuit-level simulation in PSpice and ADS, system-level simulation in Simulink. Designed PCBs by Altium Designer. Tuned the parasitic parameters by Ansys Maxwell.
+- Special prize of the 3rd Electrical & Electronic Engineering Innovation Competition.
 
----
-# Projects and Competitions
-## 1kW Bidirectional Isolated DC/DC Converter
 
 <div style="display: flex; justify-content: space-between;">
     <Image src={MultistageCLLC_1} alt="Image 1" style="height: auto; width: 32%; object-fit: contain;"/>
@@ -66,40 +36,50 @@ import Heartsound_2 from '/src/assets/images/heartsound-2.jpg'
     <Image src={MultistageCLLC_3} alt="Image 3" style="height: auto; width: 32%; object-fit: contain;"/>
 </div>
 
-- Designed a 1kW bidirectional isolated DC/DC Converter, with 36~60V on the LV side and 400V on the HV side. The device achieves peak efficiency of 94% in experiment. GaN HEMT and planar transformer are used to improve power density, allowing for portable size with the thickness low as 25mm. Experiment shows that the converter is capable of driving 500W load with natural cooling at room temperature, or 1kW load with an extra 10W forced cooling.
-- Responsible for circuit design. Proposed a multistage topology combining a multi-winding CLLC converter and a synchronous buck/boost adjusting stage. Derived the steady-state model in MATLAB and tuned the component values. Selected the switching devices based on the result of the loss stimulations.
-- Independently designed the gate driver, isolated sampling circuit, auxiliary power supply and other subsystems. Implemented the system on a 6-layer PCB.
-- As the leader, attained the special prize with a team of four. Monitored the progress and organized experiments during competition. Participated in multiple replies. Finished report, poster, video, etc.
-
-## Smart Stethoscope & Electrocardiogram Detector
+<Image src={MultistageCLLC_4} alt="Image 4" style="height: auto; object-fit: contain;"/>
+<Image src={MultistageCLLC_5} alt="Image 5" style="height: auto; object-fit: contain;"/>
 
 <div style="display: flex; justify-content: space-between;">
-    <Image src={Heartsound_1} alt="Image 1" style="height: auto; width: 45%; object-fit: contain;"/>
-    <Image src={Heartsound_2} alt="Image 2" style="height: auto; width: 45%; object-fit: contain;"/>
+    <Image src={MultistageCLLC_8} alt="Image 8" style="height: auto; width: 40%; object-fit: contain;"/>
+    <Image src={MultistageCLLC_9} alt="Image 9" style="height: auto; width: 40%; object-fit: contain;"/>
+    <Image src={MultistageCLLC_10} alt="Image 10" style="height: auto; width: 13%; object-fit: contain;"/>
 </div>
 
-- Designed a smart stethoscope for early scan of congenital cardiac diseases. The device is powered by battery and communicates via Bluetooth. The electrocardiogram (ECG) and the sound of the heart are sampled simultaneously and are transmitt d to the upper device, which uses a pre-trained ML model to detect the indications of cardiac diseases.
-- Responsible for hardware design. Designed a heart sound detector using microphone and OPAMP, an ECG detector using AD8232 signal conditioning block, a Li-ion battery managing circuit and the peripheral circuits of an ESP32 SoC. Drew a 4-layer round PCB with diameter of 30mm.
-- Participated in the development of embedded software. Designed a 16-order digital Butterworth notch filter and implemented on ESP32.
-- Won the first prize of the 7th National Biomedical Engineering Competition in China with a team of three. 
 
----
-# Extracurricular Activities
-## Student Robotics Association, Zhejiang Univ.
-- Elected as the director of software department. Responsible for crew training, including Arduino programming and basic principles of 8-bit AVR MCUs.
 
-## Qizhen Interdisciplinary Innovation & Entrepreneur Lab, Zhejiang Univ.
-- Host regular seminars where team members share technical updates.
-- Responsible of crew training, including circuit design and embedded software development.
+# Wireless Neural Stimulator with Simultaneous Energy-Information Transmission
 
-{/* # Technique Skills
-**Circuit-level simulation tools**: Cadence PSpice, PLECS, ADS, Multisim, Proteus.
+- A medical implant for stroke curing. Please refer to CN117357794/CN117919590 for more details.
 
-**PCB design tools**: Altium Designer.
-Embedded Software Development: Embedded Linux on Zynq 7000 SoC, STM32, ESP32.
+<Image src={NeuralStimulator} alt="Image 1" style="height: auto; object-fit: contain;"/>
 
-**Software Development**: C# under .NET Framework, Network programming with C, MATLAB & Python programming for calculation or data acquisition.
+# 60 kV X-Ray Generator
 
-**Document composing**: Latex / Overleaf.
+- Basically a high-voltage generator based on an improved self-oscillating inverter, used to drive a dental X-ray tube. The X-ray image is converted to visible image by a CaWO4 screen.
 
-**Graphic design**: Photoshop, Inksacpe. */}
+<Image src={Xray_1} alt="Image 1" style="height: auto; object-fit: contain;"/>
+
+<div style="display: flex; justify-content: space-between;">
+    <Image src={Xray_2} alt="Image 2" style="height: auto; width: 26%; object-fit: contain;"/>
+    <Image src={Xray_3} alt="Image 3" style="height: auto; width: 35%; object-fit: contain;"/>
+    <Image src={Xray_4} alt="Image 4" style="height: auto; width: 29%; object-fit: contain;"/>
+</div>
+
+# Portable Smart Stethoscope & Electrocardiograph
+
+- A smart stethoscope for early scan of congenital cardiac diseases, powered by battery and communicates via Bluetooth. The electrocardiogram (ECG) and the sound of the heart are sampled simultaneously and are transmitted to the upper device, which uses a pre-trained ML model to detect the indications of cardiac diseases. 
+
+- First prize of the 7th National Biomedical Engineering Competition.
+
+<div style="display: flex; justify-content: space-between;">
+    <Image src={Heartsound_1} alt="Image 1" style="height: auto; width: 49%; object-fit: contain;"/>
+    <Image src={Heartsound_2} alt="Image 2" style="height: auto; width: 49%; object-fit: contain;"/>
+</div>
+
+# Full Entropy Random Number Generator Based on Geiger-Miller Counter
+
+- Generates full entropy random number ("truly random number") based on α-radiation-triggered events.
+
+- Used a vintage British military (questionable) Geiger-Miller Tube biased at 1kV.
+
+<Image src={Geiger} alt="Image 1" style="height: auto; object-fit: contain;"/>

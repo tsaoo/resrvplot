@@ -52,14 +52,17 @@ Using the fact that $n=p$ in intrinsic semiconductor:
 $$E_F \equiv E_i$$
 
 </center>
+
 $E_i$ is the intrinsic Fermi level.
 
 Also, given that $n=n_i$
+
 <center>
 
 $$N_c = n_i e^{\frac{E_c-E_i}{kT}}$$
 
 </center>
+
 So carrier concentration could be written as a function of $n_i$ and $E_i$:
 <center>
 
