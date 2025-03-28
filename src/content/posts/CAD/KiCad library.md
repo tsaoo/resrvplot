@@ -14,7 +14,6 @@ draft: false
 This plugin does not pull anything online, instead it helps manage those already downloaded. Footprints/symbols are sorted by their sources.
 
 
-
 1. `Folder of the library to import` is where you put the .zip files from UltraLibrarian, SnapEDA and other platforms.
 2. `Library save location` is where the converted library locates.
 
