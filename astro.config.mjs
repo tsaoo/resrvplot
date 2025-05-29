@@ -17,12 +17,13 @@ import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.
 import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
-import mdx from '@astrojs/mdx'
+
+import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://fuwari.vercel.app/",
-	base: "/",
+	site: "http://tsaoo.github.io",
+  	base: "resrvplot",
 	trailingSlash: "always",
 	integrations: [
 		tailwind({
