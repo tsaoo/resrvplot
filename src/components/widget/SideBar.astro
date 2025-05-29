@@ -8,13 +8,11 @@ import type { CollectionKey } from 'astro:content'
 import type { MarkdownHeading } from 'astro'
 
 interface Props {
-    class? : string
-    headings? : MarkdownHeading[]
+	class?: string;
+	headings?: MarkdownHeading[];
 }
 
-const className = Astro.props.class
-const headings = Astro.props.headings
-
+const className = Astro.props.class;
 ---
 <div id="sidebar" class:list={[className, "w-full"]}>
     <div class="flex flex-col w-full gap-4 mb-4">
@@ -23,7 +21,7 @@ const headings = Astro.props.headings
         <Tag class="onload-animation" style="animation-delay: 200ms"></Tag>
     </div>
     <div class="flex flex-col w-full gap-4 top-4 sticky top-4">
-        <div id="toc" class="transition-all duration-700 flex flex-col w-full gap-4">
-            {headings && headings.length > 0 && <SideBarTOC class="mb-4 onload-animation" style="animation-delay: 150ms" headings={headings}/>}
+        <!-- <div id="toc" class="transition-all duration-700 flex flex-col w-full gap-4">
+            {headings && headings.length > 0 && <SideBarTOC class="mb-4 onload-animation" style="animation-delay: 150ms" headings={headings}/>} -->
     </div>  
 </div>
