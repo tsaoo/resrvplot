@@ -2,8 +2,8 @@
 title: 遗物甩卖
 published: 2025-06-04
 description: "童叟无欺"
-tags: [spec]
-category: "spec"
+tags: ["Special"]
+category: ""
 draft: false
 ---
 

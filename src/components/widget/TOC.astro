@@ -16,7 +16,7 @@ for (const heading of headings) {
 
 const className = Astro.props.class;
 
-const isPostsRoute = Astro.url.pathname.startsWith("/posts/");
+const isPostsRoute = Astro.url.pathname.startsWith("/resrvplot/posts/");            // note that the root path for resrvplot is /resrvplot, for it is deployed on Github Page without a custom domain.
 
 const removeTailingHash = (text: string) => {
 	let lastIndexOfHash = text.lastIndexOf("#");
@@ -33,6 +33,10 @@ const maxLevel = siteConfig.toc.depth;
 ---
 {isPostsRoute &&
 <table-of-contents class:list={[className, "group"]}>
+    
+    {/* <p>[DEBUG]: Heading Count: {headings.length}</p>
+    <p>[DEBUG]: URL: {Astro.url.pathname}</p> */}
+
     {headings.filter((heading) => heading.depth < minDepth + maxLevel).map((heading) =>
             <a href={`#${heading.slug}`} class="px-2 flex gap-2 relative transition w-full min-h-9 rounded-xl
         hover:bg-[var(--toc-btn-hover)] active:bg-[var(--toc-btn-active)] py-2

@@ -3,7 +3,7 @@ title: Zynq-Petalinux Boot Sequence
 published: 2024-09-02
 description: "How Zynq boots, a note for hardware design"
 tags: ["Petalinux", "Zynq"]
-category: Petalinux
+category: Notes
 draft: false
 ---
 

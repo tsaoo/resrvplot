@@ -3,7 +3,7 @@ title: How to Build and Maintain a Library in AD
 published: 2025-02-17
 description: "AD元件库基本操作（X-Lab）"
 tags: ["PCB"]
-category: Tutorials
+category: Public
 draft: false
 ---
 

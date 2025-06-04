@@ -3,7 +3,7 @@ title: 2 Octave Graphic Equalizer
 published: 2024-10-17
 description: "XLAB2023 硬件电路组暑期内训项目"
 tags: ["Circuit Design"]
-category: Hardware
+category: Public
 draft: false
 ---
 

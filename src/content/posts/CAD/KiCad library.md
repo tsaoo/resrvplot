@@ -3,7 +3,7 @@ title: KiCad Library
 published: 2025-03-23
 description: "Importing / converting from other sources"
 tags: ["PCB"]
-category: Tutorials
+category: Notes
 draft: false
 ---
 

@@ -3,7 +3,7 @@ title: Xilinx Toolchain Setup
 published: 2024-09-02
 description: "Memo for setting up Xilinx toolchain for Zynq"
 tags: ["Zynq"]
-category: Petalinux
+category: Notes
 draft: false
 ---
 

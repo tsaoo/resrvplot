@@ -1,0 +1,274 @@
+---
+title: DelphiScript for Altium Designer
+published: 2025-06-04
+description: "Altium Designer API"
+tags: ["PCB"]
+category: "Notes"
+draft: false
+---
+
+I agree that Altium Designer is THE most intuitive PCB designing tool among a short list of what I have ever used. But its potential is significantly downgraded by an absolutely TERRIFYING API system, which inexplicably uses the zombie-like DelphiScript as its programming language.
+
+I just can't figure out why the Altium picked DelphiScript from all those options, and I don't actually want to learn anything more about it. It's just an old crap. But you have to deal with it since the mighty Altium seems to be happy with it.
+
+Here records the development of a script that fans out MCUs according to CubeMX. The version for release can be found here:
+
+::github{repo="tsaoo/EETools"}
+
+Or refer to the [document on this site](../mcu-auto-fanout/).
+
+# API Documents
+
+[Altium Design Software API Reference](https://www.altium.com/documentation/altium-designer/altium-design-software-api-reference?version=22) that describes the structure of the API system. It is pretty simple in fact, divided into subsystems of Schematic, PCB ,and Library, etc.
+
+[Schematic API System Interface List](https://www.altium.com/documentation/altium-designer/schematic-api-system-interfaces?version=22) of all accessible functions. List for other subsystems may be found in the parent directory.
+
+[DelphiScript API Examples](https://www.altium.com/documentation/altium-designer/scripting-examples-reference?version=22.0) that are useful for understanding common practice. The examples can be also found in the official Github repo 👇
+
+::github{repo="Altium-Designer-addons/scripts-libraries"}
+
+# Coding
+
+## Main Function
+
+### Function Declaration
+
+```pascal
+procedure FanOutMCUPins;
+var
+  CurrentSchDoc: ISch_Document;                   // from which the "Run Script" command is executed
+
+  CompIterator: ISch_Iterator;                     // used to iterate components on CurrentSchDoc
+  Component: ISch_Component;                      // component iterated by CompIterator
+  PinIterator: ISch_Iterator;                     // used to iterate pin within Component
+  Pin: ISch_Pin;                                  // pin iterated by PinIterator
+  PinDesignator: String;                          // designator of Pin
+  PinFullDesignator: String;                      // full designator with part id (i.e. U1A-A4), used to check whether the iterated pin belongs to 
+                                                      // the current part of Component
+  PinFunction: String;                            // function of Pin, read from PinDictionary
+
+  Wire: ISch_Wire;                                // the fanout wire to be created
+  StartX, StartY, EndX, EndY: Integer;            // the absolute location of Wire
+  NetLabel: ISch_Netlabel;                        // labeling the function of the pin connected to Wire
+  NetLabelJustification: TTestJustification;      // justification of NetLabel
+
+  IsFound: Boolean;                               // flag indicating whether an MCU component is found
+  i: Integer;
+
+begin
+  ...
+  end;
+```
+
+Here the main function `FanOutMCUPins` has no parameters, if you want any, define it as:
+```pascal
+procedure FanOutMCUPins(x, y: Integer)
+```
+
+In DelphiScript you have to declare every variable at the beginning of a function. Global variables are declared at the beginning of the whole script. That's also what `FanOutMCUPins` does. Notice that even the counting variables for looping must also be declared in advance, like the `i` here.
+
+Here, `CurrentSchDoc` is a `ISch_Document` object. The focused document at the time when the script is called will be read into it later. `ISch_Iterator` is an abstract executor that scan through specified objects within a specified parent. Other stuff are self-explanatory.
+
+### Searching for Pins
+Then the script searches for pins of the desired component.
+```pascal
+// within the '...' of the former code block
+  LoadPinoutCSV;        
+
+  if SchServer = nil then
+  begin
+    ShowMessage('SchServer not found, aborted!');
+    Exit;
+  end;
+
+  CurrentSchDoc := SchServer.GetCurrentSchDocument;
+  if CurrentSchDoc = nil then
+  begin
+    ShowMessage('Current document is not SchDoc, aborted!');
+    Exit;
+  end;
+
+  CompIterator := CurrentSchDoc.SchIterator_Create;
+  CompIterator.AddFilter_ObjectSet(MkSet(eSchComponent));      // let CompIterator read the component objects only
+
+  IsFound := False;
+  Component := CompIterator.FirstSchObject;                    // iterate the components
+  while Component <> nil do
+  begin
+    if (Component.Comment <> nil) and (Copy(Component.Comment.Text, 1, Length(MCUType)) = MCUType) then
+    begin
+      IsFound := True;
+
+      PinIterator := Component.SchIterator_Create;
+      PinIterator.AddFilter_ObjectSet(MkSet(ePin));
+      Pin := PinIterator.FirstSchObject;                      // iterate the pins
+      while Pin <> nil do
+      begin
+        ...
+      end;
+    end;
+    Component := CompIterator.NextSchObject;
+  end;
+
+  if not IsFound then
+  begin
+    ShowMessage('Not Found!');
+  end;
+
+  PinDictionary.Free;
+```
+
+It first checks if the currently focused document is a schematic. If so, it creates a `ISch_Iterator` under the schematic document to iterate the children of it, and applies a filter of `eSchComponent` enumeration type to specify the searching region as components.
+
+At Line 23, the *comment* parameter of every component on the schematic is compared with the model name of the desired MCU, to locate the corresponding component. When found, at Line 27, another `ISch_Iterator` is created to scan for every pin of the component.
+
+### Adding Fan-Out Wire
+
+```pascal
+// within the '...' of the former code block
+        PinFullDesignator := Pin.FullDesignator;
+        if (Component.IsMultiPartComponent) and ( Ord(Copy(PinFullDesignator, Pos('-',PinFullDesignator) - 1, 1)) - 64 <> Component.CurrentPartID) then      // 'A'=64, part A = part 1
+        begin
+          Pin := PinIterator.NextSchObject;
+          continue
+        end;
+          
+        PinDesignator := Pin.Designator;
+        PinFunction := PinDictionary.Values[PinDesignator];   // read function of the pin
+        if PinFunction = '' then                              // filter out pins with no function
+        begin
+          Pin := PinIterator.NextSchObject;
+          continue
+        end;
+```
+
+Here is where the true ugliness of the API system surfaces. I'm speechless.
+
+For a multi-part component (e.g. U1A and U1B), every part will be iterated once by CompIterator, and for every part, EVERY pin of the component will be iterated by PinIterator, no matter the pin belongs to the current part or not. For those pins not belonged to the current part, its Location will be read as the topleft pin of this part, which means overlapping. I.e., suppose both U1A and U1B matches the MCU's model name, when the iterator goes to U1A, pins of U1B will also be scanned, but with wrong positions.
+ 
+The solution is to check the full designator of every pin, and see if the part id (e.g. A/B/C...) meets with CurrentPartID of Component. In the above-mentioned example, when the iterators goes to U1A, pins with a parent designator ending with "B" will be skipped.
+
+With the right pins found, the next step is to add fan-out wires and net name labels 👇
+```pascal
+//following the former code block
+        StartX := Pin.Location.X;                             // location of the root of the pin
+        StartY := Pin.Location.Y;
+        if Pin.Orientation = eRight then                      // eRight actually means the pin is pointing to the left (CRAZY)
+        begin
+          StartX := StartX - Pin.PinLength;                   // find the end of the pin
+          EndX := StartX - MilsToCoord(FanOutLength);         // calculate the vertex of funout wire
+          EndY := StartY;
+          NetLabelJustification := eJustify_BottomLeft;
+        end
+        else if Pin.Orientation = eLeft then
+        begin
+          StartX := StartX + Pin.PinLength;
+          EndX := StartX + MilsToCoord(FanOutLength);
+          EndY := StartY;
+          NetLabelJustification := eJustify_BottomRight;
+        end;
+
+        Wire := SchServer.SchObjectFactory(eWire, eCreate_GlobalCopy);        // create and configure the wire
+        Wire.Location := Point(StartX, StartY);
+        Wire.InsertVertex := 1;
+        Wire.SetState_Vertex(1, Point(StartX, StartY));
+        Wire.InsertVertex := 2;
+        Wire.SetState_Vertex(2, Point(EndX, EndY));
+        CurrentSchDoc.RegisterSchObjectInContainer(Wire);
+
+        NetLabel := SchServer.SchObjectFactory(eNetlabel,eCreate_GlobalCopy);   // create and configure the net label
+        NetLabel.Location := Point(EndX, EndY);
+        NetLabel.Text := PinFunction;
+        NetLabel.SetState_Justification(NetLabelJustification);
+        CurrentSchDoc.RegisterSchObjectInContainer(NetLabel);
+
+        Pin := PinIterator.NextSchObject;
+```
+
+This part is straightforward. First it calculate the start and end location of each fan-out wire, according to a user-defined constant `FanOutLength` and the orientation of each pin. The only thing that needs attention is that `Pin.Location.X/Y` is given in absolute coordinate format (something like pixel location), the `MilsToCoord` function should be called to converter the length in mils to coordinate format. 
+
+Then it creates a wire by adding the vertexes one-by-one, and registers the wire to the current schematic document.
+
+After that a net label is put on the fan-out wire. The physical net and the wire is then automatically connected in the net list, just like what you manually do in Altium Designer.
+
+## Read Net List from CSV
+
+```pascal
+procedure LoadPinoutCSV;
+var
+  CSVLine: String;
+  CSVFile: TStringList;
+  LineComponents: TStringList;
+  i: Integer;
+begin
+  PinDictionary := TStringList.Create;
+
+  CSVFile := TStringList.Create;
+  LineComponents := TStringList.Create;
+
+  CSVFile.LoadFromFile(PinOutFilePath);
+
+  for i := 1 to CSVFile.Count - 1 do
+  begin
+    CSVLine := CSVFile[i];
+    LineComponents.StrictDelimiter := True;
+    LineComponents.Delimiter := ','; 
+    LineComponents.DelimitedText := CSVLine;
+    if LineComponents[3] <> '' then
+    PinDictionary.Add(LineComponents[0] + '=' + LineComponents[3]);
+  end;
+
+  CSVFile.Free;
+  LineComponents.Free;
+  end;
+end;
+```
+
+This part read the CSV pin description file exported from cubeMX into a string dictionary. Once again, DelphiScript (perhaps Pascal too) shows its insanity. The way to add an item to the dictionary is to pass a "key=value" formatted string to `Add` function, then it will parse the string. I have literally no idea why they made it so complex. What's wrong with `PinDictionary[key] := value` ??
+
+(To make things worse, working with `:=` makes me feel like writing verilog.)
+
+# Graphics UI
+
+The Altium API system accepts a .dfm file with the same name as the .pas, to serve as the GUI description script. The basic format is something like:
+```
+object form1: TForm1
+    object Button_RunClick: TButton
+        Left = 10
+        Top = 230
+        Width = 480
+        Height = 100
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
+        Caption = 'Run'
+        Default = True
+        ModalResult = 1
+        TabOrder = 0
+        OnClick = Button_RunClick
+    end;
+end;
+```
+
+The above code block defines a button. The `OnClick` parameter indicates the callback function of a clicking event. To use the callback function, add this to the .pas script 👇
+
+```pascal
+procedure TForm1.Button_RunClick(Sender: TObject);
+begin
+  PinOutFilePath := Box_Path.Text;
+  FanOutLength := StrToInt(Box_FanOutLength.Text);
+  MCUType := Box_MCUType.Text;
+  if CheckBox_DebugMode.State = cbChecked then          // not sure if it is the only way to do an if-else
+  begin                                                 // Delphi is fucking nonsense to me
+    DebugModeEnabled := True;
+  end
+  else
+  begin
+    DebugModeEnabled := False;
+  end;
+
+  FanOutMCUPins;
+  Close;
+end;
+```
