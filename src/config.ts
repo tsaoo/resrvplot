@@ -65,7 +65,7 @@ export const profileConfig: ProfileConfig = {
     {
       name: 'E-Mail',
       icon: 'material-symbols:alternate-email',
-      url: 'mailto:tinesharp@outlook.com',
+      url: 'mailto:zytsao@outlook.com',
     },
   ],
 }

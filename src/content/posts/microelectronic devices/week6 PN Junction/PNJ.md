@@ -2,8 +2,8 @@
 title: MD Notes 5 - PN Junction
 published: 2024-11-07
 description: "Lecture 6&7"
-tags: ["Microelectronic Devices"]
-category: Notes
+tags: ["Microelectronic Devices","Notes"]
+category: ""
 draft: false
 ---
 

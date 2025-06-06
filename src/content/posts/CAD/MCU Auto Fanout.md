@@ -2,8 +2,8 @@
 title: MCU Auto Fan-Out Tool
 published: 2025-04-17
 description: "Scripts for KiCAD & Altium Designer"
-tags: ["PCB", "Project"]
-category: Public
+tags: ["Public", "Project"]
+category: PCB
 draft: false
 ---
 

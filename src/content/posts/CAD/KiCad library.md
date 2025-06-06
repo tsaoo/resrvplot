@@ -2,8 +2,8 @@
 title: KiCad Library
 published: 2025-03-23
 description: "Importing / converting from other sources"
-tags: ["PCB"]
-category: Notes
+tags: ["Notes"]
+category: PCB
 draft: false
 ---
 

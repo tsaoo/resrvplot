@@ -2,8 +2,8 @@
 title: Device Tree
 published: 2024-09-02
 description: "Usage and format of device trees"
-tags: ["Petalinux", "Zynq", "Device Tree"]
-category: Notes
+tags: ["Petalinux", "Zynq", "Device Tree", "Notes"]
+category: FPGA
 draft: false
 ---
 

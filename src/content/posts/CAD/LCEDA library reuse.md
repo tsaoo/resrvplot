@@ -2,8 +2,8 @@
 title: How to Reuse Component Libraries from LCEDA
 published: 2025-02-17
 description: "如何利用立创EDA元件库（X-Lab）"
-tags: ["PCB"]
-category: Public
+tags: ["Public","X-Lab"]
+category: PCB
 draft: false
 ---
 

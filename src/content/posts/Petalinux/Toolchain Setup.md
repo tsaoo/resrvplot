@@ -2,8 +2,8 @@
 title: Xilinx Toolchain Setup
 published: 2024-09-02
 description: "Memo for setting up Xilinx toolchain for Zynq"
-tags: ["Zynq"]
-category: Notes
+tags: ["Zynq","Notes"]
+category: FPGA
 draft: false
 ---
 

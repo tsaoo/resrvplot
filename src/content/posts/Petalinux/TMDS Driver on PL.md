@@ -2,8 +2,8 @@
 title: Build up TMDS Driver on PL Resources
 published: 2024-09-16
 description: "How to setup Linux driver for TMDS pipeline on PL"
-tags: ["Petalinux", "Zynq", "Zynq Graphics"]
-category: Notes
+tags: ["Petalinux", "Zynq", "Zynq Graphics", "Notes"]
+category: FPGA
 draft: false
 ---
 
