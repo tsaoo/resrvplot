@@ -9,7 +9,7 @@ draft: false
 
 # 遗 物 甩 卖
 
-*最后更新：6月7日 2:17*
+*最后更新：6月7日 16:00*
 
 你好。我马上要毕业了，在此甩卖遗物。老子讲过：“少则得，多则惑[1]”，如果你准备买我的东西，想必是要惑了。所以我尽量卖得便宜一些，好让你吃的亏少一点。
 
@@ -31,7 +31,7 @@ draft: false
 | 穆斯林的葬礼，霍达 | 没读 | ¥10.00 | 没人要 |
 | 地下室手记，陀思妥耶夫斯基 | 读了一半，好 | ¥10.00 | 没人要 |
 | 南十字星共和国——俄国象征派小说选 | 读了3/4，好 | ¥10.00 | 没人要 |
-| 摇摇晃晃的人间 | 想不起来为什么在我这 | ¥10.00 | 没人要 |
+| 摇摇晃晃的人间，余秀华 | 想不起来为什么在我这 | ¥10.00 | 没人要 |
 | The Years, Virginia Woolf | 没读 | ¥10.00 | 没人要 |
 | A Room of One's Own, VW | 没读 | ¥10.00 | 没人要 |
 | To the Lighthouse, VW | 好 | ¥10.00 | 没人要 |
@@ -58,8 +58,17 @@ draft: false
 |东西|描述|建议开价|状态|
 |--|--|--|--|
 AX7A035B 开发板一套|ALINX做的，Xilinx XC7A35T的板子，见[tb](https://detail.tmall.com/item.htm?abbucket=14&detail_redpacket_pop=true&id=596131978635)。原盒，保修卡还在，不带下载器|￥800.00|没人要
-AX7020 开发板|也是ALINX做的，Xilinx XC7Z020的板子，Zynq SoC，原盒应该还在，就是得找找|￥1000.00|没人要
-TI LAUNCHXL-F280049C 开发板|TI原装，见[官网](https://www.ti.com/tool/LAUNCHXL-F280049C)。两个月前上电时序控制器的参考电压不准，导致reset不了，我换了PMIC的采样电阻，现在好了。我认为不是使用导致问题（好久不用了），应该就是TI设计的电阻误差裕量没给够。|￥200.00|没人要|
-BOOSTXL-BUCKCONV实验板|TI原装，[官网](https://www.ti.com/tool/BOOSTXL-BUCKCONV)，配合LAUNCHXL的一个Buck变换器+电子负载|￥200.00|没人要|
+AX7020 开发板 ![](sale.assets/zynq.jpg)|也是ALINX做的，Xilinx XC7Z020的板子，Zynq SoC，见[tb](https://detail.tmall.com/item.htm?id=595881671423)，原盒保修卡|￥1000.00|没人要
+TI LAUNCHXL-F280049C 开发板 ![](sale.assets/launchxl.jpg)|TI原装，见[官网](https://www.ti.com/tool/LAUNCHXL-F280049C)。两个月前上电时序控制器的参考电压不准，导致reset不了，我换了PMIC的采样电阻，现在好了。我认为不是使用导致问题（好久不用了），应该就是TI设计的电阻误差裕量没给够。|￥200.00|没人要|
+BOOSTXL-BUCKCONV实验板 ![](sale.assets/boostxl.jpg)|TI原装，[官网](https://www.ti.com/tool/BOOSTXL-BUCKCONV)，配合LAUNCHXL的一个Buck变换器+电子负载，原盒|￥200.00|没人要|
 
-待更新。
+## 杂项
+|东西|描述|建议开价|状态|
+|--|--|--|--|
+平面变压器磁芯 N87(ELP+I) 3套 ![](sale.assets/planer1.jpg)| TDK, 见[datasheet](https://www.tdk-electronics.tdk.com/inf/80/db/fer/elp_38_8_25.pdf) | 共￥100.00 | 没人要
+平面变压器磁芯 EE32(E+I) PC95 一套 ![](sale.assets/planer2.jpg)| 不知道谁产的，见[tb](https://item.taobao.com/item.htm?id=631209956995) | ￥15.00 | 没人要
+平面变压器+PCBA 25:3:3 350W 2套 ![](sale.assets/planer3.jpg) | [tb](https://item.taobao.com/item.htm?id=688392334175)买的，不知道哪流出来的 | 共￥40.00 | 没人要
+100W负载电阻 $15\Omega \to 100\Omega$ 100W ![](sale.assets/load.jpg) | 见[tb](https://item.taobao.com/item.htm?id=527509035524) | ￥20.00 | 没人要
+6.1'' 256x50 VFD点阵屏 ![](sale.assets/vfd.jpg) | 见[tb](https://item.taobao.com/item.htm?id=671777065685) | ￥50.00 | 没人要
+
+其它太乱了不放了，欢迎垂询。
