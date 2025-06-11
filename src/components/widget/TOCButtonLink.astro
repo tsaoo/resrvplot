@@ -1,0 +1,25 @@
+---
+interface Props {
+  url?: string;
+  class?: string;
+}
+
+const { url, class: className } = Astro.props;
+---
+
+<a href={url} aria-label="toc link" class={`block w-full no-underline ${className ?? ''}`}>
+  <button
+    class="w-full rounded-lg bg-none pl-2 pr-3 py-2
+      hover:bg-[var(--btn-plain-bg-hover)]
+      active:bg-[var(--btn-plain-bg-active)]
+      transition-all
+      text-neutral-700 dark:text-neutral-300
+      hover:text-[var(--primary)] dark:hover:text-[var(--primary)]
+      text-left
+      whitespace-normal break-words
+      "
+    style="display: block;"
+  >
+    <slot />
+  </button>
+</a>

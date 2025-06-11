@@ -1,12 +1,12 @@
 ---
 import WidgetLayout from './WidgetLayout.astro'
 import type { MarkdownHeading } from 'astro';
-
+import { siteConfig } from '../../config'
 import { i18n } from '../../i18n/translation'
 import I18nKey from '../../i18n/i18nKey'
 import { getCategoryList } from '../../utils/content-utils'
 import { getCategoryUrl } from '../../utils/url-utils'
-import ButtonLink from '../control/ButtonLink.astro'
+import TOCButtonLink from './TOCButtonLink.astro'
 import { fade } from 'astro:transitions';
 
 interface Props {
@@ -26,7 +26,7 @@ const COLLAPSE_THRESHOLD = 5
 const isCollapsed = headings.length >= COLLAPSE_THRESHOLD
 
 const getPaddingClassFromHeading = (heading: MarkdownHeading) => {
-    return `ml-${heading.depth}`;
+    return `ml-${2**heading.depth}`;
 }
 
 const removeTailingHash = (text: string) => {
@@ -38,15 +38,35 @@ const removeTailingHash = (text: string) => {
     return text.substring(0, lastIndexOfHash);
 }
 
+const hue = siteConfig.themeColor.hue;
+
+let heading1Count = 1;
+
 ---
 
-<WidgetLayout name={i18n(I18nKey.toc)} id="sidebar-toc" isCollapsed={isCollapsed} collapsedHeight={COLLAPSED_HEIGHT}
-                class={className} style={style}
-                >
+<WidgetLayout name={i18n(I18nKey.toc)} id="sidebar-toc" isCollapsed={isCollapsed} collapsedHeight={COLLAPSED_HEIGHT} class={className} style={style}>
     {headings.map((heading) =>
-        <div class={getPaddingClassFromHeading(heading)}>
-            <ButtonLink url={`#${heading.slug}`}>{removeTailingHash(heading.text)}</ButtonLink>
-        </div>
+    <div
+        class={getPaddingClassFromHeading(heading)}
+        style={`font-weight: ${heading.depth === 1 ? '700' : '400'}; margin-left: ${heading.depth > 1 ? `${(heading.depth - 1) * 1.25}rem` : '0'}; display: flex; align-items: center; gap: 0.5rem;`}
+    >
+        {heading.depth === 1 &&
+        <span class="text-white rounded-full w-5 h-5 inline-flex justify-center items-center font-bold text-sm select-none bg-[var(--primary)] opacity-80">
+            {heading1Count++}
+        </span>}
+
+        {heading.depth === 2 &&
+        <span class="text-white rounded-full w-3 h-3 inline-flex justify-center items-center font-bold text-sm select-none bg-[var(--primary)] opacity-40"/>}
+
+        {heading.depth === 3 &&
+        <span class="text-white rounded-full w-2 h-2 inline-flex justify-center items-center font-bold text-sm select-none bg-[var(--primary)] opacity-20"/>}
+
+        <TOCButtonLink url={`#${heading.slug}`}>
+            <span style={heading.depth === 3 ? 'color: rgba(0, 0, 0, 0.5) !important; white-space: normal; word-break: break-word;' : 'white-space: normal; word-break: break-word;'}>
+                {removeTailingHash(heading.text)}
+            </span>
+        </TOCButtonLink>
+    </div>
     )}
 </WidgetLayout>
 
