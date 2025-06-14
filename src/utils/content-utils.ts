@@ -8,9 +8,16 @@ export async function getSortedPosts() {
 	});
 
 	const sorted = allBlogPosts.sort((a, b) => {
+		const aPinned = a.data.pinned === true;
+		const bPinned = b.data.pinned === true;
+
+		if (aPinned !== bPinned) {
+			return bPinned ? 1 : -1;
+		}
+
 		const dateA = new Date(a.data.published);
 		const dateB = new Date(b.data.published);
-		return dateA > dateB ? -1 : 1;
+		return dateB.getTime() - dateA.getTime();
 	});
 
 	for (let i = 1; i < sorted.length; i++) {

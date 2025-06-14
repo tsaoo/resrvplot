@@ -87,4 +87,5 @@ export type BlogPostData = {
 	prevSlug?: string;
 	nextTitle?: string;
 	nextSlug?: string;
+	pinned?: boolean;
 };
