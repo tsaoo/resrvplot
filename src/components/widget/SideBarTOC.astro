@@ -45,6 +45,8 @@ let heading1Count = 1;
 ---
 
 <WidgetLayout name={i18n(I18nKey.toc)} id="sidebar-toc" isCollapsed={isCollapsed} collapsedHeight={COLLAPSED_HEIGHT} class={className} style={style}>
+  <table-of-contents>
+  <div id="toc-inner-wrapper" class="relative !bg-none">
     {headings.map((heading) =>
     <div
         class={getPaddingClassFromHeading(heading)}
@@ -66,7 +68,14 @@ let heading1Count = 1;
                 {removeTailingHash(heading.text)}
             </span>
         </TOCButtonLink>
+
+        <div id="active-indicator" class:list={[{
+          'hidden': headings.length == 0}, "-z-10 absolute bg-[var(--toc-btn-hover)] -left-[0.5rem] right-0 rounded-xl transition-all group-hover:bg-transparent border-[var(--toc-btn-hover)] group-hover:border-[var(--toc-btn-active)] border-dashed"
+        ]}></div>
     </div>
     )}
+  </div>
+  </table-of-contents>
 </WidgetLayout>
 
+<script src="./SideBarTOCObserver.js"></script>

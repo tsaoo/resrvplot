@@ -15,6 +15,7 @@ import {
 } from "../constants/constants";
 import Layout from "./Layout.astro";
 
+
 interface Props {
 	title?: string;
 	banner?: string;
@@ -91,6 +92,83 @@ const mainPanelTop = siteConfig.banner.enable
                         <Footer></Footer>
                     </div>
                 </div>
+
+                <script type="module">
+                    function hideProfile() {
+                        const container = document.getElementById('profile-container');
+                        const sidebar = document.getElementById('sidebar');
+                        if (!container || !sidebar) return;
+
+                        container.style.height = container.scrollHeight + 'px';
+
+                        requestAnimationFrame(() => {
+                        container.style.transition = 'opacity 0.5s ease, transform 0.5s ease, height 0.5s ease';
+                        container.style.opacity = '0';
+                        container.style.transform = 'translateY(-20px)';
+                        container.style.height = '1px';
+                        container.style.pointerEvents = 'none';
+
+                        sidebar.classList.add('profile-hidden');
+
+                        const onEnd = (e) => {
+                            if (e.propertyName === 'height') {
+                                container.style.height = '1px';
+                                container.removeEventListener('transitionend', onEnd);
+                            }
+                        };
+
+                        container.addEventListener('transitionend', onEnd);
+                        });
+                    }
+
+                    function showProfile() {
+                        const container = document.getElementById('profile-container');
+                        const sidebar = document.getElementById('sidebar');
+                        if (!container || !sidebar) return;
+
+                        container.style.display = '';
+                        container.style.transition = '';
+
+                        container.style.opacity = '0';
+                        container.style.transform = 'translateY(20px)';
+                        container.style.height = '0';
+                        container.style.pointerEvents = 'none';
+
+                        requestAnimationFrame(() => {
+                            container.style.transition = 'opacity 0.5s ease, transform 0.5s ease, height 0.5s ease';
+                            container.style.opacity = '1';
+                            container.style.transform = 'translateY(0)';
+                            container.style.height = container.scrollHeight + 'px';
+                            container.style.pointerEvents = '';
+
+                            sidebar.classList.remove('profile-hidden');
+
+                            container.addEventListener('transitionend', function onEnd(e) {
+                                if (e.propertyName === 'height') {
+                                    container.style.height = 'auto';
+                                    container.style.transition = '';
+                                    container.removeEventListener('transitionend', onEnd);
+                                }
+                            });
+                        });
+                    }
+
+                    function updateProfileVisibility() {
+                        const container = document.getElementById('profile-container');
+                        if (!container) return;
+                        const path = window.location.pathname;
+                        if (path === '/resrvplot/') {
+                        showProfile();
+                        console.debug('[Profile] Show profile');
+                        } else {
+                        hideProfile();
+                        console.debug('[Profile] Hide profile');
+                        }
+                    }
+
+                    updateProfileVisibility();
+                </script>
+
             </main>
 
             <div class="footer col-span-2 onload-animation block lg:hidden">
@@ -106,7 +184,7 @@ const mainPanelTop = siteConfig.banner.enable
 <div class="absolute w-full z-0 hidden 2xl:block">
     <div class="relative max-w-[var(--page-width)] mx-auto">
         <!-- TOC component -->
-        {siteConfig.toc.enable && <div id="toc-wrapper" class:list={["hidden lg:block transition absolute top-0 -right-[var(--toc-width)] w-[var(--toc-width)] items-center",
+        <!-- {siteConfig.toc.enable && <div id="toc-wrapper" class:list={["hidden lg:block transition absolute top-0 -right-[var(--toc-width)] w-[var(--toc-width)] items-center",
             {"toc-hide": siteConfig.banner.enable}]}
         >
             <div id="toc-inner-wrapper" class="fixed top-14 w-[var(--toc-width)] h-[calc(100vh_-_20rem)] overflow-y-scroll overflow-x-hidden hide-scrollbar">
@@ -116,10 +194,12 @@ const mainPanelTop = siteConfig.banner.enable
                     <div class="h-8 w-full"></div>
                 </div>
             </div>
-        </div>}
+        </div>} -->
 
         <!-- #toc needs to exist for Swup to work normally -->
-        {!siteConfig.toc.enable && <div id="toc"></div>}
+        {<div id="toc"></div>}
     </div>
 </div>
 </Layout>
+
+

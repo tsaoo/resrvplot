@@ -64,10 +64,24 @@
     .toc-not-ready {
         @apply opacity-0 pointer-events-none
     }
-
-    #toc-inner-wrapper {
+ 
+/*  #toc-inner-wrapper {
         mask-image: linear-gradient(to bottom, transparent 0%, black 2rem, black calc(100% - 2rem), transparent 100%);
+    } */
+
+    #profile-container {
+    overflow: hidden;
     }
+
+    #sidebar-top {
+    transition: margin-top 0.5s ease;
+    margin-top: 0rem;
+    }
+
+    .profile-hidden #sidebar-top {
+    margin-top: -2.5rem;
+    }
+
 
     .hide-scrollbar {
         scrollbar-width: none;
