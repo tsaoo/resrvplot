@@ -1,0 +1,76 @@
+---
+const imageModules = import.meta.glob('/src/assets/images/wall/*.{jpg,jpeg,png,webp,gif}', { eager: true });
+
+const rawPhotos = Object.entries(imageModules).map(([path, mod]) => ({
+  src: (mod as any).default?.src ?? (mod as any).src ?? '',
+  alt: path.split('/').pop() || 'photo',
+}));
+
+
+function shuffle<T>(arr: T[]): T[] {
+  return arr.map(value => ({ value, sort: Math.random() }))
+            .sort((a, b) => a.sort - b.sort)
+            .map(({ value }) => value);
+}
+
+const photos = shuffle(rawPhotos);
+
+---
+
+<style>
+.masonry {
+  column-count: 2;
+  column-gap: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+.masonry canvas {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease;
+}
+.masonry canvas:hover {
+  transform: scale(1.03);
+}
+</style>
+
+<div class="masonry">
+  {photos.map((photo) => (
+    <canvas class="photo-canvas" data-src={photo.src} data-alt={photo.alt}></canvas>
+  ))}
+</div>
+
+<script type="module">
+  const drawWatermarkedCanvas = (canvas, src, alt) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.src = src;
+
+    img.onload = () => {
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+
+      const watermark = '© Zhiyang Cao / Reserved Plot';
+      const fontSize = Math.floor(img.width / 30);
+      ctx.font = `${fontSize}px sans-serif`;
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+      ctx.textAlign = 'right';
+      ctx.fillText(watermark, img.width - 20, img.height - 20);
+    };
+  };
+
+  document.querySelectorAll('.photo-canvas').forEach((canvas) => {
+    const src = canvas.dataset.src;
+    const alt = canvas.dataset.alt;
+    drawWatermarkedCanvas(canvas, src, alt);
+  });
+</script>

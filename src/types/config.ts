@@ -38,7 +38,7 @@ export enum LinkPreset {
   Home = 0,
   Archive = 1,
   CV = 2,
-  About = 3,
+  Img = 3,
   Links = 4,
 }
 

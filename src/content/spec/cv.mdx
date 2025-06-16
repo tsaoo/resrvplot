@@ -1,4 +1,8 @@
 import { Image } from 'astro:assets';
+
+import ZJUgrad from '/src/assets/images/wall/ZJUgrad.jpg'
+import SMS from '/src/assets/images/wall/SMS.jpg'
+
 import MultistageCLLC_1 from '/src/assets/images/MultistageCLLC-1.png'
 import MultistageCLLC_2 from '/src/assets/images/MultistageCLLC-2.png'
 import MultistageCLLC_3 from '/src/assets/images/MultistageCLLC-3.png'
@@ -22,8 +26,18 @@ import Xray_4 from '/src/assets/images/Xray-4.png'
 
 import Geiger from '/src/assets/images/Geiger.jpg'
 
+<center>
+# Education
 
-# 1kW Bidirectional Isolated DC/DC Converter
+<Image src={ZJUgrad} alt="ZJUgrad" style="height: auto; object-fit: contain;"/>
+<span style="position: relative; top: -2rem">2021-2025, Zhejiang University, Hangzhou.</span>
+</center>
+
+<center>
+# Interesting Stuff
+</center>
+
+## 1kW Bidirectional Isolated DC/DC Converter
 
 - A 1kW bidirectional isolated DC/DC Converter, with 36~60V on the LV side and 400V on the HV side. The device achieves peak efficiency of ~95% at 500W load. GaN HEMTs and planar transformer are used to improve power density, allowing for portable size with the thickness low as 25mm. Experiment validated that the converter is capable of driving 500W load with natural cooling at room temperature, or 1kW load with an extra 10W forced cooling.
 
@@ -47,13 +61,13 @@ import Geiger from '/src/assets/images/Geiger.jpg'
 
 
 
-# Wireless Neural Stimulator with Simultaneous Energy-Information Transmission
+## Wireless Neural Stimulator with Simultaneous Energy-Information Transmission
 
 - A medical implant for stroke curing. Please refer to CN117357794/CN117919590 for more details.
 
 <Image src={NeuralStimulator} alt="Image 1" style="height: auto; object-fit: contain;"/>
 
-# 60 kV X-Ray Generator
+## 60 kV X-Ray Generator
 
 - Basically a high-voltage generator based on an improved self-oscillating inverter, used to drive a dental X-ray tube. The X-ray image is converted to visible image by a CaWO4 screen.
 
@@ -65,7 +79,7 @@ import Geiger from '/src/assets/images/Geiger.jpg'
     <Image src={Xray_4} alt="Image 4" style="height: auto; width: 29%; object-fit: contain;"/>
 </div>
 
-# Portable Smart Stethoscope & Electrocardiograph
+## Portable Smart Stethoscope & Electrocardiograph
 
 - A smart stethoscope for early scan of congenital cardiac diseases, powered by battery and communicates via Bluetooth. The electrocardiogram (ECG) and the sound of the heart are sampled simultaneously and are transmitted to the upper device, which uses a pre-trained ML model to detect the indications of cardiac diseases. 
 
@@ -76,7 +90,7 @@ import Geiger from '/src/assets/images/Geiger.jpg'
     <Image src={Heartsound_2} alt="Image 2" style="height: auto; width: 49%; object-fit: contain;"/>
 </div>
 
-# Full Entropy Random Number Generator Based on Geiger-Miller Counter
+## Full Entropy Random Number Generator Based on Geiger-Miller Counter
 
 - Generates full entropy random number ("truly random number") based on α-radiation-triggered events.
 
