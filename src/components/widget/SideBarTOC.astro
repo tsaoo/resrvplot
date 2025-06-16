@@ -23,7 +23,7 @@ const style = Astro.props.style
 const COLLAPSED_HEIGHT = '7.5rem'
 const COLLAPSE_THRESHOLD = 5
 
-const isCollapsed = headings.length >= COLLAPSE_THRESHOLD
+const isCollapsed = false
 
 const getPaddingClassFromHeading = (heading: MarkdownHeading) => {
     return `ml-${2**heading.depth}`;
