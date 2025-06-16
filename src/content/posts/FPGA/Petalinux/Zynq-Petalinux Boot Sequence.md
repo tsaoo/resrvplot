@@ -2,7 +2,7 @@
 title: Zynq-Petalinux Boot Sequence
 published: 2024-09-02
 description: "How Zynq boots, a note for hardware design"
-tags: ["Petalinux", "Zynq", "Notes"]
+tags: ["Petalinux", "Zynq", "Note"]
 category: FPGA
 draft: false
 ---

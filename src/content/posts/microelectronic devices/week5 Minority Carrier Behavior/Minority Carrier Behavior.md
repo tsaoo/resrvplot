@@ -2,7 +2,7 @@
 title: MD Notes 4 - Minority Carrier Behavior
 published: 2024-11-07
 description: "Lecture 5"
-tags: ["MicroelectronicDevices","Notes"]
+tags: ["MicroelectronicDevices","Note"]
 category: ""
 draft: false
 ---

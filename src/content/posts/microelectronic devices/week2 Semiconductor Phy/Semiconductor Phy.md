@@ -2,7 +2,7 @@
 title: MD Notes 1 - Semiconductor Physics
 published: 2024-11-07
 description: "Lecture 2"
-tags: ["MicroelectronicDevices","Notes"]
+tags: ["MicroelectronicDevices","Note"]
 category: ""
 draft: false
 ---

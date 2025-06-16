@@ -2,7 +2,7 @@
 title: USB Configuration
 published: 2024-09-02
 description: "Edit device tree to enable USB"
-tags: ["Petalinux", "Zynq", "DeviceTree", "Notes"]
+tags: ["Petalinux", "Zynq", "DeviceTree", "Note"]
 category: FPGA
 draft: false
 ---

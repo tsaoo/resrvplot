@@ -2,7 +2,7 @@
 title: DelphiScript for Altium Designer
 published: 2025-06-04
 description: "Altium Designer API"
-tags: ["Notes"]
+tags: ["Note"]
 category: PCB
 draft: false
 ---

@@ -2,7 +2,7 @@
 title: C2000 - EPWM
 published: 2025-03-28
 description: "Note on C2000 real-time"
-tags: ["C2000", "Notes"]
+tags: ["C2000", "Note"]
 category: C2000
 draft: false
 ---

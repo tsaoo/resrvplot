@@ -2,7 +2,7 @@
 title: When will the sum of samples from a trigonometric function be zero
 published: 2025-06-12
 description: "math for the fools"
-tags: ["Notes"]
+tags: ["Note"]
 category: "EE"
 draft: false
 ---

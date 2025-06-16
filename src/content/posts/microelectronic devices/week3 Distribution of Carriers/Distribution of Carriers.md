@@ -2,7 +2,7 @@
 title: MD Notes 2 - Distribution of Carriers
 published: 2024-11-07
 description: "Lecture 2&3"
-tags: ["MicroelectronicDevices","Notes"]
+tags: ["MicroelectronicDevices","Note"]
 category: ""
 draft: false
 ---

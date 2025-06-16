@@ -2,7 +2,7 @@
 title: MD Notes 3 - Carrier Actions in Semiconductor
 published: 2024-11-07
 description: "Lecture 3&4"
-tags: ["MicroelectronicDevices","Notes"]
+tags: ["MicroelectronicDevices","Note"]
 category: ""
 draft: false
 ---
