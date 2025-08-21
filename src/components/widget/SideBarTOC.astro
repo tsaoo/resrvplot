@@ -1,13 +1,13 @@
 ---
-import WidgetLayout from './WidgetLayout.astro'
+import { fade } from 'astro:transitions';
 import type { MarkdownHeading } from 'astro';
 import { siteConfig } from '../../config'
-import { i18n } from '../../i18n/translation'
 import I18nKey from '../../i18n/i18nKey'
+import { i18n } from '../../i18n/translation'
 import { getCategoryList } from '../../utils/content-utils'
 import { getCategoryUrl } from '../../utils/url-utils'
 import TOCButtonLink from './TOCButtonLink.astro'
-import { fade } from 'astro:transitions';
+import WidgetLayout from './WidgetLayout.astro'
 
 interface Props {
   class?: string
@@ -63,8 +63,15 @@ let heading1Count = 1;
         {heading.depth === 3 &&
         <span class="text-white rounded-full w-2 h-2 inline-flex justify-center items-center font-bold text-sm select-none bg-[var(--primary)] opacity-20"/>}
 
-        <TOCButtonLink url={`#${heading.slug}`}>
+        {/* Can't see the 3rd title in dark mode */}
+        {/* <TOCButtonLink url={`#${heading.slug}`}>
             <span style={heading.depth === 3 ? 'color: rgba(0, 0, 0, 0.5) !important; white-space: normal; word-break: break-word;' : 'white-space: normal; word-break: break-word;'}>
+                {removeTailingHash(heading.text)}
+            </span>
+        </TOCButtonLink> */}
+
+        <TOCButtonLink url={`#${heading.slug}`}>
+            <span style={'white-space: normal; word-break: break-word;'}>
                 {removeTailingHash(heading.text)}
             </span>
         </TOCButtonLink>
