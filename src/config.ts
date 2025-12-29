@@ -63,6 +63,11 @@ export const profileConfig: ProfileConfig = {
       url: 'https://github.com/tsaoo',
     },
     {
+      name: 'Linkedin',
+      icon: 'fa6-brands:linkedin',
+      url: 'https://www.linkedin.com/in/zhiyang-cao-874531375/',
+    },
+    {
       name: 'E-Mail',
       icon: 'material-symbols:alternate-email',
       url: 'mailto:zytsao@outlook.com',
